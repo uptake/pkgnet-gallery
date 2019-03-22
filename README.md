@@ -15,9 +15,9 @@ Submit a pull request to this repository that, at minimum, adds html code to `vi
 </td>
 ```
 
-A function to help create gallery exhibits (particularly the images) will soon be available in [pkgnet](https://uptakeopensource.github.io/pkgnet/index.html).  However, if choose to create your example report and image independently, it's preferred that you create your image in the same size and style as the others in the gallery for aesthetics.
+A function to help create gallery exhibits (particularly the images) will soon be available in [pkgnet](https://uptakeopensource.github.io/pkgnet/index.html).  However, if you choose to create your example report and image independently, it's preferred that you create your image in the same size and style as the others in the gallery for aesthetics.
 
-If you would like to host your examples on this repository as well, include their addition to the `exhibits` folder in your pull request as well. 
+If you would like to host your examples on this repository as well, include their addition to the `exhibits` folder in your pull request. 
 
 ### Why is this a seperate repository? 
 There are a few reasons:     
