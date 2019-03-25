@@ -8,7 +8,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-Welcome to the **pkgnet** gallery!   Click one any item below to see an example report.  Go to the [github page](https://github.com/UptakeOpenSource/pkgnet) to contribute. 
+Welcome to the **pkgnet** gallery!   Click one any item below to see an example report.  Go to the [gallery github page](https://github.com/UptakeOpenSource/pkgnet-gallery) to contribute. 
 
 <!--html_preserve-->
 <table>
