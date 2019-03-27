@@ -32,7 +32,7 @@ If you would like to host your examples on this repository, include their additi
 If you have the means and desire to host your exhibits yourself, you are welcome to do that.
 
 #### 3. Add HTML Code (just a little)
-Add html code to `vignettes/pkgnet-gallery.Rmd` that links to your exhibit (either hosted elsewhere or in this repository) in following this format:
+Add html code to [`vignettes/pkgnet-gallery.Rmd`](vignettes/pkgnet-gallery.Rmd) that links to your exhibit (either hosted elsewhere or in this repository) in following this format:
 
 ```HTML
 <td width="33%">[Your Package Name]<br>
