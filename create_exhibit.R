@@ -26,19 +26,25 @@ library("visNetwork")
 library("webshot")
 
 option_list <- list( 
-make_option(c("--dest_folder")
+  make_option(c("-o","--output_folder")
               , default = getwd()
               , type = "character"
               , dest = "outputFolder"
               , help = "(String) The path to the folder in which to create the exhibit [default is the current working directory]."
-              )
-  , make_option(c("--package_path")
+  )
+  , make_option(c("-p","--package_path")
                 , default = NULL
                 , type = "character"
                 , dest = "pkgPath"
                 , help = "(String) The path to the R package directory if downloaded."
-                )
   )
+  , make_option(c("-i","--inheritance_reporter")
+                , action = "store_true"
+                , default = FALSE
+                , dest = "inheritanceReporterInd"
+                , help = "Include inheritance reporter in report"
+  )
+)
 
 parser <- OptionParser(usage = "%prog [options] package_name"
                        , description = "\nCreate an exhibit for the pkgnet gallery."
@@ -64,15 +70,28 @@ reportPath <- file.path(outDir
                         , paste0(package_name,'.html')
 )
 
+if(opt$inheritanceReporterInd == TRUE){
+  reporterList <- c(pkgnet::DefaultReporters()
+                    , pkgnet::InheritanceReporter$new()
+                    )
+} else {
+  reporterList <- pkgnet::DefaultReporters()
+}
+
+
+
+
 if (is.null(opt$pkgPath)){
   # report without covr
   t <- pkgnet::CreatePackageReport(pkg_name = package_name
                                    , report_path = reportPath
+                                   , pkg_reporters = reporterList
   )
 } else {
   # report with covr
   t <- pkgnet::CreatePackageReport(pkg_name = package_name
                                    , report_path = reportPath
+                                   , pkg_reporters = reporterList
                                    , pkg_path = opt$pkgPath
   )
 }
