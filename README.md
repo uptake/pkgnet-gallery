@@ -5,7 +5,32 @@ Please visit [the pkgnet website](https://uptakeopensource.github.io/pkgnet/inde
 # FAQs
 
 ### How can I contribute an example to the gallery? 
-Submit a pull request to this repository that, at minimum, adds html code to `vignettes/pkgnet-gallery.Rmd` following this format:
+#### 1. Create an exhibit
+
+To create the exhibit with one command, use `create_exhibit.R` It creates both the report and image and saves them in an exhibit folder.  Use it right from the terminal via Rscript. 
+
+```console
+$ Rscript create_exhibit.R <package name>
+```
+
+Optionally, if you have the R package downloaded locally, you can create an exhibit with code coverage information.
+
+```console
+$ Rscript create_exhibit.R <package name> --package_path=<path to package>
+```
+
+See the help documentation for more information: 
+```console
+$ Rscript create_exhibit.R -h
+```
+
+#### 2. Host your exhibit
+If you would like to host your examples on this repository, include their addition to the `exhibits` folder in your [pull request](https://help.github.com/en/articles/creating-a-pull-request).
+
+If you have the means and desire to host your exhibits yourself, you are welcome to do that.
+
+#### 3. Add HTML Code (just a little)
+Add html code to `vignettes/pkgnet-gallery.Rmd` that links to your exhibit (either hosted elsewhere or in this repository) in following this format:
 
 ```HTML
 <td width="33%">[Your Package Name]<br>
@@ -15,9 +40,10 @@ Submit a pull request to this repository that, at minimum, adds html code to `vi
 </td>
 ```
 
-A function to help create gallery exhibits (particularly the images) will soon be available in [pkgnet](https://uptakeopensource.github.io/pkgnet/index.html).  However, if you choose to create your example report and image independently, it's preferred that you create your image in the same size and style as the others in the gallery for aesthetics.
+Be sure to keep three (3) exhibits per row at maximum. 
 
-If you would like to host your examples on this repository as well, include their addition to the `exhibits` folder in your pull request. 
+#### 3. Submit!
+[Submit a pull request](https://help.github.com/en/articles/creating-a-pull-request)!
 
 ### Why is this a seperate repository? 
 There are a few reasons:     
@@ -30,5 +56,5 @@ By having the gallery content hosted here, we achieve all three of these things.
 ### Why are there so many seemingly extra files in this repository?
 We want to make the transition from [the main pkgnet website](https://uptakeopensource.github.io/pkgnet/index.html) to the gallery page within that website as seamless as possible.  To do so, we create the gallery page with the same R package, [pkgdown](https://pkgdown.r-lib.org/index.html), that we use to create the main page with very similar configuration files. Since creating a section of a website outside of the R package directory is not standard functionality for [pkgdown](https://pkgdown.r-lib.org/index.html), we replicate a few files and folder structures [pkgdown](https://pkgdown.r-lib.org/index.html) expects here. 
 
-### Isn't there a better why to do this? 
-Most likely.  We've love for you to submit your ideas on the issues page of either this repository of the main pkgnet repository. 
+### Isn't there a better why to do this?
+Most likely.  We've love for you to submit your ideas on the issues page (preferably on the [main pkgnet repository](https://github.com/UptakeOpenSource/pkgnet/issues)). 
