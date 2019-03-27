@@ -1,0 +1,101 @@
+#!/usr/bin/env Rscript
+# Copyright 2019 Uptake Technologies Inc.
+#   
+# Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+#   
+#   1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+# 
+#   2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+# 
+#   3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+# 
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
+# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES 
+# OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
+# IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, 
+# INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, 
+# PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; 
+# OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, 
+# STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, 
+# EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+## PACKAGES ####
+library("optparse")
+library("pkgnet")
+library("visNetwork")
+library("webshot")
+
+option_list <- list( 
+make_option(c("--dest_folder")
+              , default = getwd()
+              , type = "character"
+              , dest = "outputFolder"
+              , help = "(String) The path to the folder in which to create the exhibit [default is the current working directory]."
+              )
+  , make_option(c("--package_path")
+                , default = NULL
+                , type = "character"
+                , dest = "pkgPath"
+                , help = "(String) The path to the R package directory if downloaded."
+                )
+  )
+
+parser <- OptionParser(usage = "%prog [options] package_name"
+                       , description = "\nCreate an exhibit for the pkgnet gallery."
+                       , option_list=option_list
+                       , epilogue = paste0("Submit your exhibit via pull request to the pkgnet gallery at:\n"
+                                           , "https://github.com/UptakeOpenSource/pkgnet-gallery"
+                                           , '\n')
+                       )
+
+arguments <- parse_args(parser, positional_arguments = 1)
+opt <- arguments$options
+package_name <- arguments$args
+
+## create directory path ##
+outDir <- file.path(opt$outputFolder
+                    , paste0(package_name,'_pkgnet_exhibit')
+)
+
+# The directory itself will be created during pkgnet::CreatePackageReport
+
+## CREATE REPORT ##
+reportPath <- file.path(outDir
+                        , paste0(package_name,'.html')
+)
+
+if (is.null(opt$pkgPath)){
+  # report without covr
+  t <- pkgnet::CreatePackageReport(pkg_name = package_name
+                                   , report_path = reportPath
+  )
+} else {
+  # report with covr
+  t <- pkgnet::CreatePackageReport(pkg_name = package_name
+                                   , report_path = reportPath
+                                   , pkg_path = opt$pkgPath
+  )
+}
+
+
+## CREATE IMAGE ##
+pkgnet:::log_info("Creating exhibit image...")
+tempReport <- tempfile(fileext = ".html")
+imagePath <- file.path(outDir
+                       , paste0(package_name,'.png')
+)
+
+visNetwork::visSave(t$FunctionReporter$graph_viz
+                    , file = tempReport
+                    , selfcontained = TRUE)
+
+webshot::webshot(url = tempReport
+                 , file = imagePath
+                 , selector = '.vis-network'
+                 , vwidth = 177
+)
+
+pkgnet:::log_info(sprintf("Done creating exhibit image! It is available at %s"
+                          , imagePath
+                          )
+)
