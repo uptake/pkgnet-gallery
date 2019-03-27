@@ -10,6 +10,8 @@ Please visit [the pkgnet website](https://uptakeopensource.github.io/pkgnet/inde
 To create the exhibit with one command, use `create_exhibit.R` It creates both the report and image and saves them in an exhibit folder.  Use it right from the terminal via Rscript. 
 
 ```console
+$ git clone https://github.com/UptakeOpenSource/pkgnet-gallery.git
+$ cd pkgnet-gallery
 $ Rscript create_exhibit.R <package name>
 ```
 
