@@ -44,7 +44,7 @@ Add html code to `vignettes/pkgnet-gallery.Rmd` that links to your exhibit (eith
 
 Be sure to keep three (3) exhibits per row at maximum. 
 
-#### 3. Submit!
+#### 4. Submit!
 [Submit a pull request](https://help.github.com/en/articles/creating-a-pull-request)!
 
 ### Why is this a seperate repository? 
