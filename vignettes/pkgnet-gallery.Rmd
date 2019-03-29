@@ -21,5 +21,12 @@ Welcome to the **pkgnet** gallery!   Click one any item below to see an example 
 		<td width="33%">pkgnet<br><a href="https://uptakeopensource.github.io/pkgnet-gallery/exhibits/pkgnet/pkgnet.html"><img width="300" src="https://uptakeopensource.github.io/pkgnet-gallery/exhibits/pkgnet/pkgnet.png"></a></td>
 		<td width="33%">updraft<br><a href="https://uptakeopensource.github.io/pkgnet-gallery/exhibits/updraft/updraft.html"><img width="300" src="https://uptakeopensource.github.io/pkgnet-gallery/exhibits/updraft/updraft.png"></a></td>
 	</tr>
+	<tr>
+	    <td width="33%">pipecleaner<br>
+	<a href="https://uptakeopensource.github.io/pkgnet-gallery/exhibits/pipecleaner/pipecleaner.html">
+		<img width="300" src="https://uptakeopensource.github.io/pkgnet-gallery/exhibits/pipecleaner/pipecleaner.png">
+	</a>
+	</tr>
+</td>
 </table>
 <!--/html_preserve-->
