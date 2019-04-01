@@ -66,6 +66,8 @@ outDir <- file.path(opt$outputFolder
 # The directory itself will be created during pkgnet::CreatePackageReport
 
 ## CREATE REPORT ##
+Sys.setenv(PKGNET_SUPPRESS_BROWSER = TRUE) # open report after checks
+
 reportPath <- file.path(outDir
                         , paste0(package_name,'.html')
 )
@@ -77,8 +79,6 @@ if(opt$inheritanceReporterInd == TRUE){
 } else {
   reporterList <- pkgnet::DefaultReporters()
 }
-
-
 
 
 if (is.null(opt$pkgPath)){
@@ -96,6 +96,9 @@ if (is.null(opt$pkgPath)){
   )
 }
 
+## CreatePackageReport should error out if report is not created.
+
+Sys.unsetenv('PKGNET_SUPPRESS_BROWSER')
 
 ## CREATE IMAGE ##
 pkgnet:::log_info("Creating exhibit image...")
@@ -104,17 +107,42 @@ imagePath <- file.path(outDir
                        , paste0(package_name,'.png')
 )
 
+# Delete Previous Image If Exists
+if(file.exists(imagePath)){
+  resultVal <- file.remove(imagePath) # passed to variable to suppress TRUE
+}
+
 visNetwork::visSave(t$FunctionReporter$graph_viz
                     , file = tempReport
                     , selfcontained = TRUE)
 
 webshot::webshot(url = tempReport
-                 , file = imagePath
-                 , selector = '.vis-network'
-                 , vwidth = 177
+                              , file = imagePath
+                              , selector = '.vis-network'
+                              , vwidth = 177
 )
 
-pkgnet:::log_info(sprintf("Done creating exhibit image! It is available at %s"
-                          , imagePath
-                          )
-)
+resultVal <- file.remove(tempReport) # passed to variable to suppress TRUE
+
+## CONFIRM IMAGE IS CREATED ##
+# Due to phantomJS install issues that webshot handles, this is necessary.
+
+if (file.exists(imagePath)){
+  pkgnet:::log_info(sprintf("Exhibit image successfully created! It is available at %s"
+                            , imagePath
+                            )
+                    )
+  
+  utils::browseURL(reportPath)
+  
+} else {
+  msg <- paste0('Unforunately, there was an issue creating the gallery image.\n'
+                , 'It may be due to a PhantomJS installation issue.\n'
+                , 'Run webshot::install_phantomjs() to install PhantomJS.\n'
+                , 'See ?webshot::install_phantomjs for more details.')
+  
+  stop(msg)
+}
+
+
+

@@ -6,27 +6,21 @@ Please visit [the pkgnet website](https://uptakeopensource.github.io/pkgnet/inde
 
 ### How can I contribute an example to the gallery? 
 
-#### 0. Install Development Version of pkgnet
-
-Temporarily, use the development version of pkgnet to create exhibits.  This version can be installed by: 
-```
-devtools::install_github("UptakeOpenSource/pkgnet")	
-```
-
 #### 1. Create an exhibit
 
 To create the exhibit with one command, use `create_exhibit.R` It creates both the report and image and saves them in an exhibit folder.  Use it right from the terminal via Rscript. 
 
 ```console
+$ Rscript -e 'install.packages("pkgnet")' # if necessary
 $ git clone https://github.com/UptakeOpenSource/pkgnet-gallery.git
 $ cd pkgnet-gallery
-$ Rscript create_exhibit.R <package name>
+$ Rscript create_exhibit.R -o exhibits <package name>
 ```
 
 Optionally, if you have the R package downloaded locally, you can create an exhibit with code coverage information.
 
 ```console
-$ Rscript create_exhibit.R <package name> --package_path=<path to package>
+$ Rscript create_exhibit.R -o exhibits -p <path to package> <package name> 
 ```
 
 See the help documentation for more information: 
