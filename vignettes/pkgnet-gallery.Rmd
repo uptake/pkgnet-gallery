@@ -47,6 +47,11 @@ Welcome to the **pkgnet** gallery!   Click one any item below to see an example 
 		</td>
 	</tr>
 	<tr>
+		<td width="33%">pkgnet (Vignette)<br>
+			<a href="https://uptakeopensource.github.io/pkgnet-gallery/exhibits/pkgnet-vignette/pkgnet-vignette.html">
+				<img width="300" src="https://uptakeopensource.github.io/pkgnet-gallery/exhibits/updraft/pkgnet-vignette.png">
+			</a>
+		</td>
 		<td width="33%">updraft<br>
 			<a href="https://uptakeopensource.github.io/pkgnet-gallery/exhibits/updraft/updraft.html">
 				<img width="300" src="https://uptakeopensource.github.io/pkgnet-gallery/exhibits/updraft/updraft.png">
