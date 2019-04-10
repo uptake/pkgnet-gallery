@@ -56,6 +56,41 @@ exhibitsList <- list(
     ### ADD NEW EXHIBITS ABOVE THIS LINE ###
 )
 
+assertthat::assert_that(
+    all(vapply(
+        X = exhibitsList
+        , FUN = is.list
+        , FUN.VALUE = logical(1)
+    ))
+    , msg = "Not all elements of exhibitsList is a list."
+)
+
+assertthat::assert_that(
+    all(vapply(
+        X = exhibitsList
+        , FUN = function(exh) {
+            setequal(names(exh), c("package_name", "report_url", "image_url"))
+        }
+        , FUN.VALUE = logical(1)
+    ))
+    , msg = "Not all elements of exhibitsList have 'package_name', 'report_url', 'image_url'"
+)
+
+assertthat::assert_that(
+    all(vapply(
+        X = exhibitsList
+        , FUN = function(exh) {
+            all(vapply(
+                X = exh
+                , FUN = is.character
+                , FUN.VALUE = logical(1)
+            ))
+        }
+        , FUN.VALUE = logical(1)
+    ))
+    , msg = "Some exhibit(s) have non-character values for 'package_name', 'report_url', or 'image_url'"
+)
+
 # Sort exhibits alphabetically by name
 exhibitsList <- exhibitsList[order(
     # Pull out package_name to use with order to reorder
@@ -67,7 +102,7 @@ exhibitsList <- exhibitsList[order(
 
 # Template for one cell in exhibit table, for use with glue
 cellTemplate <- '
-<td width="33%">{package_name}<br>
+<td width="33%" style="text-align:center">{package_name}<br>
     <a href="{report_url}">
         <img width="300" src="{image_url}">
     </a>
