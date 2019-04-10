@@ -33,18 +33,25 @@ If you would like to host your examples on this repository, include their additi
 
 If you have the means and desire to host your exhibits yourself, you are welcome to do that.
 
-#### 3. Add HTML Code (just a little)
-Add html code to [`vignettes/pkgnet-gallery.Rmd`](vignettes/pkgnet-gallery.Rmd) that links to your exhibit (either hosted elsewhere or in this repository) in following this format:
+#### 3. Add your exhibit to the gallery page
 
-```HTML
-<td width="33%">[Your Package Name]<br>
-	<a href="[URL to your package report]">
-		<img width="300" src="[URL to your image]">
-	</a>
-</td>
+Add your exhibit to [`vignettes/pkgnet-gallery.Rmd`](vignettes/pkgnet-gallery.Rmd). Find the line that says 
+
+```
+### ADD NEW EXHIBITS ABOVE THIS LINE ###
 ```
 
-Be sure to keep three (3) exhibits per row at maximum. 
+and then add a new entry to the list above that line for your package. (Note the leading comma---you shouldn't need to touch any other lines.)
+
+```R
+    , list(
+        package_name = "[Your Package Name]"
+        , report_url = "[URL to your package report]"
+        , image_url = "[URL to your image]"
+    )
+```
+
+OPTIONAL: If you have the knitr, htmltools, and glue packages installed, you should be able to test that everything runs through correctly by hitting "Knit" if you're using RStudio.
 
 #### 4. Submit!
 [Submit a pull request](https://help.github.com/en/articles/creating-a-pull-request)!
