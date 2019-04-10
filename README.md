@@ -51,7 +51,7 @@ and then add a new entry to the list above that line for your package. (Note the
     )
 ```
 
-OPTIONAL: If you have the knitr, htmltools, and glue packages installed, you should be able to test that everything runs through correctly by hitting "Knit" if you're using RStudio.
+OPTIONAL: If you have the knitr and glue packages installed, you should be able to test that everything runs through correctly by hitting "Knit" if you're using RStudio.
 
 #### 4. Submit!
 [Submit a pull request](https://help.github.com/en/articles/creating-a-pull-request)!
