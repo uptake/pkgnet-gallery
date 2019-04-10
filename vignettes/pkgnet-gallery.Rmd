@@ -8,55 +8,112 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-Welcome to the **pkgnet** gallery!   Click one any item below to see an example report.  Go to the [gallery github page](https://github.com/UptakeOpenSource/pkgnet-gallery) to contribute. 
+Welcome to the **pkgnet** gallery!   Click any item below to see an example report.  Go to the [gallery github page](https://github.com/UptakeOpenSource/pkgnet-gallery) to contribute. 
 
-<!--html_preserve-->
-<table>
-	<tr valign="top">
-		<td width="33%">bingo<br>
-			<a href="https://uptakeopensource.github.io/pkgnet-gallery/exhibits/bingo/bingo.html">
-				<img width="300" src="https://uptakeopensource.github.io/pkgnet-gallery/exhibits/bingo/bingo.png">
-			</a>
-		</td>
-		<td width="33%">data.table<br>
-			<a href="https://uptakeopensource.github.io/pkgnet-gallery/exhibits/data_table/data_table.html">
-				<img width="300" src="https://uptakeopensource.github.io/pkgnet-gallery/exhibits/data_table/data_table.png">
-			</a>
-		</td>
-		<td width="33%">ggplot2<br>
-			<a href="https://uptakeopensource.github.io/pkgnet-gallery/exhibits/ggplot2/ggplot2.html">
-				<img width="300" src="https://uptakeopensource.github.io/pkgnet-gallery/exhibits/ggplot2/ggplot2.png">
-			</a>
-		</td>
-	</tr>
-	<tr>
-		<td width="33%">lubridate<br>
-			<a href="https://uptakeopensource.github.io/pkgnet-gallery/exhibits/lubridate/lubridate.html">
-				<img width="300" src="https://uptakeopensource.github.io/pkgnet-gallery/exhibits/lubridate/lubridate.png">
-			</a>
-		</td>
-		<td width="33%">pipecleaner<br>
-			<a href="https://uptakeopensource.github.io/pkgnet-gallery/exhibits/pipecleaner/pipecleaner.html">
-				<img width="300" src="https://uptakeopensource.github.io/pkgnet-gallery/exhibits/pipecleaner/pipecleaner.png">
-			</a>
-		</td>
-		<td width="33%">pkgnet<br>
-			<a href="https://uptakeopensource.github.io/pkgnet-gallery/exhibits/pkgnet/pkgnet.html">
-				<img width="300" src="https://uptakeopensource.github.io/pkgnet-gallery/exhibits/pkgnet/pkgnet.png">
-			</a>
-		</td>
-	</tr>
-	<tr>
-		<td width="33%">pkgnet (Vignette)<br>
-			<a href="https://uptakeopensource.github.io/pkgnet-gallery/exhibits/pkgnet-vignette/pkgnet-vignette.html">
-				<img width="300" src="https://uptakeopensource.github.io/pkgnet-gallery/exhibits/pkgnet/pkgnet.png">
-			</a>
-		</td>
-		<td width="33%">updraft<br>
-			<a href="https://uptakeopensource.github.io/pkgnet-gallery/exhibits/updraft/updraft.html">
-				<img width="300" src="https://uptakeopensource.github.io/pkgnet-gallery/exhibits/updraft/updraft.png">
-			</a>
-		</td>
-	</tr>
-</table>
-<!--/html_preserve-->
+```{r exhibit_data, include = FALSE}
+exhibitsList <- list(
+    list(
+        package_name = "pkgnet"
+        , report_url = "https://uptakeopensource.github.io/pkgnet-gallery/exhibits/pkgnet/pkgnet.html"
+        , image_url = "https://uptakeopensource.github.io/pkgnet-gallery/exhibits/pkgnet/pkgnet.png"
+    )
+    , list(
+        package_name = "pkgnet (Vignette)"
+        , report_url = "https://uptakeopensource.github.io/pkgnet-gallery/exhibits/pkgnet-vignette/pkgnet-vignette.html"
+        , image_url = "https://uptakeopensource.github.io/pkgnet-gallery/exhibits/pkgnet/pkgnet.png"
+    )
+    , list(
+        package_name = "bingo"
+        , report_url = "https://uptakeopensource.github.io/pkgnet-gallery/exhibits/bingo/bingo.html"
+        , image_url = "https://uptakeopensource.github.io/pkgnet-gallery/exhibits/bingo/bingo.png"
+    )
+    , list(
+        package_name = "data.table"
+        , report_url = "https://uptakeopensource.github.io/pkgnet-gallery/exhibits/data_table/data_table.html"
+        , image_url = "https://uptakeopensource.github.io/pkgnet-gallery/exhibits/data_table/data_table.png"
+    )
+    , list(
+        package_name = "ggplot2"
+        , report_url = "https://uptakeopensource.github.io/pkgnet-gallery/exhibits/ggplot2/ggplot2.html"
+        , image_url = "https://uptakeopensource.github.io/pkgnet-gallery/exhibits/ggplot2/ggplot2.png"
+    )
+    , list(
+        package_name = "lubridate"
+        , report_url = "https://uptakeopensource.github.io/pkgnet-gallery/exhibits/lubridate/lubridate.html"
+        , image_url = "https://uptakeopensource.github.io/pkgnet-gallery/exhibits/lubridate/lubridate.png"
+    )
+    , list(
+        package_name = "pipecleaner"
+        , report_url = "https://uptakeopensource.github.io/pkgnet-gallery/exhibits/pipecleaner/pipecleaner.html"
+        , image_url = "https://uptakeopensource.github.io/pkgnet-gallery/exhibits/pipecleaner/pipecleaner.png"
+    )
+    , list(
+        package_name = "updraft"
+        , report_url = "https://uptakeopensource.github.io/pkgnet-gallery/exhibits/updraft/updraft.html"
+        , image_url = "https://uptakeopensource.github.io/pkgnet-gallery/exhibits/updraft/updraft.png"
+    )
+    
+    ### ADD NEW EXHIBITS ABOVE THIS LINE ###
+)
+
+# Sort exhibits alphabetically by name
+exhibitsList <- exhibitsList[order(
+    # Pull out package_name to use with order to reorder
+    vapply(exhibitsList, `[[`, i = "package_name", FUN.VALUE = character(1))
+)]
+```
+
+```{r write_html, include = FALSE}
+
+# Template for one cell in exhibit table, for use with glue
+cellTemplate <- '
+<td width="33%">{package_name}<br>
+    <a href="{report_url}">
+        <img width="300" src="{image_url}">
+    </a>
+</td>
+'
+
+numRows <- ceiling(length(exhibitsList)/3)
+cellToRowMapping <- ceiling(1:length(exhibitsList)/3)
+
+# Generate vector of row html blobs
+rowHTML <- vapply(
+    X = 1:numRows
+    , FUN = function(row) {
+        paste('<tr>'
+              # Paste together cells
+              , paste(
+                  # Generate cell HTML
+                  vapply(
+                    X = exhibitsList[cellToRowMapping == row]
+                    , FUN = function(exh) {
+                        glue::glue(
+                            cellTemplate
+                            , package_name = exh[['package_name']]
+                            , report_url = exh[['report_url']]
+                            , image_url = exh[['image_url']]
+                        )
+                    }
+                    , FUN.VALUE = character(1)
+                  )
+                  , collapse = "\n"
+              )
+              , '</tr>'
+              , sep = '\n'
+        )
+    }
+    , FUN.VALUE = character(1)
+)
+
+tableHTML <- paste(
+    '<table>'
+    , paste(rowHTML, collapse = '\n')
+    , '</table>'
+    , sep = "\n"
+)
+```
+
+```{r html_output, echo = FALSE}
+knitr::asis_output(htmltools::htmlPreserve(tableHTML))
+```
