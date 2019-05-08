@@ -7,4 +7,3 @@
 # ignore all created docs expect gallery page
 !docs/articles/pkgnet-gallery.html
 docs/*
-!docs/articles
