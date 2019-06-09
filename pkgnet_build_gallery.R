@@ -29,7 +29,7 @@ replaceIx <- setdiff(relativePathIx, articlesIx)
 
 ## Replace them
 htmlText[replaceIx] <- gsub(pattern = '(\\.){2}'
-                            , replacement = 'https://uptakeopensource.github.io/pkgnet'
+                            , replacement = 'https://uptake.github.io/pkgnet'
                             , x = htmlText[replaceIx]
                             )
 

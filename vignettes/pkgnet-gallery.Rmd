@@ -8,49 +8,49 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-Welcome to the **pkgnet** gallery!   Click any item below to see an example report.  Go to the [gallery github page](https://github.com/UptakeOpenSource/pkgnet-gallery) to contribute. 
+Welcome to the **pkgnet** gallery!   Click any item below to see an example report.  Go to the [gallery github page](https://github.com/uptake/pkgnet-gallery) to contribute. 
 
 ```{r exhibit_data, include = FALSE}
 exhibitsList <- list(
     list(
         package_name = "pkgnet"
-        , report_url = "https://uptakeopensource.github.io/pkgnet-gallery/exhibits/pkgnet/pkgnet.html"
-        , image_url = "https://uptakeopensource.github.io/pkgnet-gallery/exhibits/pkgnet/pkgnet.png"
+        , report_url = "https://uptake.github.io/pkgnet-gallery/exhibits/pkgnet/pkgnet.html"
+        , image_url = "https://uptake.github.io/pkgnet-gallery/exhibits/pkgnet/pkgnet.png"
     )
     , list(
         package_name = "pkgnet (Vignette)"
-        , report_url = "https://uptakeopensource.github.io/pkgnet-gallery/exhibits/pkgnet-vignette/pkgnet-vignette.html"
-        , image_url = "https://uptakeopensource.github.io/pkgnet-gallery/exhibits/pkgnet/pkgnet.png"
+        , report_url = "https://uptake.github.io/pkgnet-gallery/exhibits/pkgnet-vignette/pkgnet-vignette.html"
+        , image_url = "https://uptake.github.io/pkgnet-gallery/exhibits/pkgnet/pkgnet.png"
     )
     , list(
         package_name = "bingo"
-        , report_url = "https://uptakeopensource.github.io/pkgnet-gallery/exhibits/bingo/bingo.html"
-        , image_url = "https://uptakeopensource.github.io/pkgnet-gallery/exhibits/bingo/bingo.png"
+        , report_url = "https://uptake.github.io/pkgnet-gallery/exhibits/bingo/bingo.html"
+        , image_url = "https://uptake.github.io/pkgnet-gallery/exhibits/bingo/bingo.png"
     )
     , list(
         package_name = "data.table"
-        , report_url = "https://uptakeopensource.github.io/pkgnet-gallery/exhibits/data_table/data_table.html"
-        , image_url = "https://uptakeopensource.github.io/pkgnet-gallery/exhibits/data_table/data_table.png"
+        , report_url = "https://uptake.github.io/pkgnet-gallery/exhibits/data_table/data_table.html"
+        , image_url = "https://uptake.github.io/pkgnet-gallery/exhibits/data_table/data_table.png"
     )
     , list(
         package_name = "ggplot2"
-        , report_url = "https://uptakeopensource.github.io/pkgnet-gallery/exhibits/ggplot2/ggplot2.html"
-        , image_url = "https://uptakeopensource.github.io/pkgnet-gallery/exhibits/ggplot2/ggplot2.png"
+        , report_url = "https://uptake.github.io/pkgnet-gallery/exhibits/ggplot2/ggplot2.html"
+        , image_url = "https://uptake.github.io/pkgnet-gallery/exhibits/ggplot2/ggplot2.png"
     )
     , list(
         package_name = "lubridate"
-        , report_url = "https://uptakeopensource.github.io/pkgnet-gallery/exhibits/lubridate/lubridate.html"
-        , image_url = "https://uptakeopensource.github.io/pkgnet-gallery/exhibits/lubridate/lubridate.png"
+        , report_url = "https://uptake.github.io/pkgnet-gallery/exhibits/lubridate/lubridate.html"
+        , image_url = "https://uptake.github.io/pkgnet-gallery/exhibits/lubridate/lubridate.png"
     )
     , list(
         package_name = "pipecleaner"
-        , report_url = "https://uptakeopensource.github.io/pkgnet-gallery/exhibits/pipecleaner/pipecleaner.html"
-        , image_url = "https://uptakeopensource.github.io/pkgnet-gallery/exhibits/pipecleaner/pipecleaner.png"
+        , report_url = "https://uptake.github.io/pkgnet-gallery/exhibits/pipecleaner/pipecleaner.html"
+        , image_url = "https://uptake.github.io/pkgnet-gallery/exhibits/pipecleaner/pipecleaner.png"
     )
     , list(
         package_name = "updraft"
-        , report_url = "https://uptakeopensource.github.io/pkgnet-gallery/exhibits/updraft/updraft.html"
-        , image_url = "https://uptakeopensource.github.io/pkgnet-gallery/exhibits/updraft/updraft.png"
+        , report_url = "https://uptake.github.io/pkgnet-gallery/exhibits/updraft/updraft.html"
+        , image_url = "https://uptake.github.io/pkgnet-gallery/exhibits/updraft/updraft.png"
     )
     
     ### ADD NEW EXHIBITS ABOVE THIS LINE ###
