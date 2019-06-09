@@ -3,24 +3,24 @@ template:
     bootswatch: flatly
     noindex: true
     
-url: https://uptakeopensource.github.io/pkgnet-gallery/
+url: https://uptake.github.io/pkgnet-gallery/
 
 navbar:
   title: "pkgnet"
   type: inverse
   left:
     - text: "Home"
-      href: https://uptakeopensource.github.io/pkgnet/index.html
+      href: https://uptake.github.io/pkgnet/index.html
     - text: "Reference"
-      href: https://uptakeopensource.github.io/pkgnet/reference/index.html
+      href: https://uptake.github.io/pkgnet/reference/index.html
     - text: "Articles"
-      href: https://uptakeopensource.github.io/pkgnet/articles/index.html
+      href: https://uptake.github.io/pkgnet/articles/index.html
     - text: "News"
-      href: https://uptakeopensource.github.io/pkgnet/news/index.html
+      href: https://uptake.github.io/pkgnet/news/index.html
     - text: "Gallery"
       href: articles/pkgnet-gallery.html
 
   right:
    - icon: fa-github
-     href: https://github.com/uptakeopensource/pkgnet
+     href: https://github.com/uptake/pkgnet
 
