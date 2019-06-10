@@ -1,7 +1,7 @@
 template:
   params:
     bootswatch: flatly
-    ganalytics: UA-137355155-1 # google analytics tracking ID
+    ganalytics: UA-137355155-2 # google analytics tracking ID
     
 url: https://uptake.github.io/pkgnet-gallery/
 
