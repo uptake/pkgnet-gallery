@@ -52,6 +52,11 @@ exhibitsList <- list(
         , report_url = "https://uptake.github.io/pkgnet-gallery/exhibits/updraft/updraft.html"
         , image_url = "https://uptake.github.io/pkgnet-gallery/exhibits/updraft/updraft.png"
     )
+    , list(
+        package_name = "uptasticsearch"
+        , report_url = "https://uptake.github.io/pkgnet-gallery/exhibits/uptasticsearch/uptasticsearch.html"
+        , image_url = "https://uptake.github.io/pkgnet-gallery/exhibits/uptasticsearch/uptasticsearch.png"
+    )
     
     ### ADD NEW EXHIBITS ABOVE THIS LINE ###
 )
