@@ -143,6 +143,3 @@ if (file.exists(imagePath)){
   
   stop(msg)
 }
-
-
-
