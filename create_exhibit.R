@@ -50,7 +50,7 @@ parser <- OptionParser(usage = "%prog [options] package_name"
                        , description = "\nCreate an exhibit for the pkgnet gallery."
                        , option_list=option_list
                        , epilogue = paste0("Submit your exhibit via pull request to the pkgnet gallery at:\n"
-                                           , "https://github.com/UptakeOpenSource/pkgnet-gallery"
+                                           , "https://github.com/uptake/pkgnet-gallery"
                                            , '\n')
                        )
 
