@@ -60,7 +60,7 @@ OPTIONAL: If you have the knitr and glue packages installed, you should be able 
 There are a few reasons:     
 1. We would like to enable gallery updates more often than  [CRAN](https://CRAN.R-project.org/package=pkgnet) version updates.   
 2. We would like to keep [the pkgnet website](https://uptake.github.io/pkgnet/index.html) in line with the last stable version of `pkgnet` (i.e. the [CRAN](https://CRAN.R-project.org/package=pkgnet) version).   
-3. We would like to keep the [pkgnet github repository](https://github.com/uptakee/pkgnet) small in size. 
+3. We would like to keep the [pkgnet github repository](https://github.com/uptake/pkgnet) small in size. 
 
 By having the gallery content hosted here, we achieve all three of these things.
 
