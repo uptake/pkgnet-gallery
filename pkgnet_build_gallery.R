@@ -1,4 +1,8 @@
 library(pkgdown)
+library(glue)
+library(assertthat)
+library(rmarkdown)
+library(knitr)
 
 ##################################################
 # This script builds the gallery with pkgdown

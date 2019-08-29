@@ -132,14 +132,14 @@ if (file.exists(imagePath)){
                             , imagePath
                             )
                     )
-  
+
   utils::browseURL(reportPath)
-  
+
 } else {
   msg <- paste0('Unforunately, there was an issue creating the gallery image.\n'
                 , 'It may be due to a PhantomJS installation issue.\n'
                 , 'Run webshot::install_phantomjs() to install PhantomJS.\n'
                 , 'See ?webshot::install_phantomjs for more details.')
-  
+
   stop(msg)
 }
