@@ -13,7 +13,7 @@ library(knitr)
 
 #### Default pkgdown build ####
 
-build_articles(lazy = FALSE)
+pkgdown::build_articles(lazy = FALSE)
 
 
 #### Tweek Paths for CSS, JS, and pkgnet icon paths ######
@@ -35,4 +35,3 @@ htmlText[replaceIx] <- gsub(pattern = '(\\.){2}'
 
 ## Rebuild Page
 writeLines(htmlText, './docs/articles/pkgnet-gallery.html')
-
