@@ -1,0 +1,54 @@
+name: Gallery Update To Match Latest Version Tag
+
+# manual trigger for now
+on:
+  push:
+    branches:
+        - main
+  workflow_dispatch:
+
+jobs:
+  build-website:
+    name: build gallery
+    runs-on: macos-latest
+    steps:
+      - name: checkout gallery repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1 
+      - name: Get Latest Version From the Other Repository
+        id: latesttag
+        run: |
+            latestVersion=$(git -c 'versionsort.suffix=-' \
+            ls-remote --exit-code --refs --sort='version:refname' --tags https://github.com/uptake/pkgnet 'v*.*.*' \
+            | tail --lines=1 \
+            | awk -F/ '{ print $3 }' \
+            | sed s/v//)
+            echo "Found $latestVersion"
+      - name: Update Version in local DESCRIPTION file
+        run: sed -i -E "s/Version:.+$/Version:\s$latestVersion/" $GITHUB_WORKSPACE/DESCRIPTION
+      - name: Git Checkout New Docs Branch 
+        run: |
+          git checkout -b website_docs_update
+      - name: set up R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: 'release'
+      - uses: r-lib/actions/setup-pandoc@v2
+      - uses: r-lib/actions/setup-tinytex@v2
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages: pkgdown
+      - name: Build Gallery
+        run: pkgnet_build_gallery.R
+        shell: Rscript {0}
+      - name: Save Site Docs Articfact
+        uses: actions/upload-artifact@v4
+        with:
+          name: "built_gallery_docs_${{steps.latesttag.outputs.latestVersion}}"
+          path: ${{github.workspace}}/docs/
+      - name: Commit website doc changes (overwrite if existing)
+        run: |
+          git add DESCRIPTION docs/\*
+          git commit -m "Update gallery documentation to ${{steps.previoustag.outputs.tag}}" || echo "No changes to commit"
+          git push -f origin website_docs_update
