@@ -38,7 +38,7 @@ jobs:
       - uses: r-lib/actions/setup-tinytex@v2
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          packages: pkgdown
+            extra-packages: any::pkgdown
       - name: Build Gallery
         run: Rscript ${{github.workspace}}/pkgnet_build_gallery.R
       - name: Save Site Docs Articfact
