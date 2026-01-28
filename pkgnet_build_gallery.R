@@ -13,6 +13,7 @@ library(knitr)
 
 #### Default pkgdown build ####
 
+pkgdown::clean_site(force = TRUE)
 pkgdown::build_articles(lazy = FALSE)
 
 
