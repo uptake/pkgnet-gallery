@@ -63,7 +63,12 @@ outDir <- file.path(opt$outputFolder
                     , paste0(package_name,'_pkgnet_exhibit')
 )
 
-# The directory itself will be created during pkgnet::CreatePackageReport
+## CREATE DIRECTORY ##
+# pkgnet::CreatePackageReport writes the report to report_path but does not
+# create its parent directory, so create it here before building the report.
+if (!dir.exists(outDir)){
+  dir.create(outDir, recursive = TRUE)
+}
 
 ## CREATE REPORT ##
 Sys.setenv(PKGNET_SUPPRESS_BROWSER = TRUE) # open report after checks
