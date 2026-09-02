@@ -66,8 +66,8 @@ elsewhere are also accepted).
 `.github/workflows/gallery_build.yml` runs on push to `main` and on manual dispatch. It bumps
 `DESCRIPTION`'s version to the latest pkgnet tag, builds the gallery, uploads `docs/` as an
 artifact, and force-pushes the result to a `website_docs_update` branch for review by PR — it never
-commits to `main` directly. Two existing quirks to be aware of if you touch it: `latestVersion` is a
-plain shell variable that is never written to `$GITHUB_OUTPUT`, so
-`steps.latesttag.outputs.latestVersion` (and `steps.previoustag.outputs.tag` in the commit message)
-resolve to empty, and the version-lookup step uses GNU `tail --lines=1`/`sed -i -E` while the job
-runs on `macos-latest`.
+commits to `main` directly. The version-lookup step writes `latestVersion` to `$GITHUB_OUTPUT`, and
+every downstream reference (the DESCRIPTION rewrite, the artifact name, the commit message) reads
+`steps.latesttag.outputs.latestVersion` — a plain shell variable would not survive across steps.
+Because the job runs on `macos-latest`, the shell in that step must stay BSD-compatible: `tail -n 1`,
+not `tail --lines=1`, and `sed -i '' -E`, not `sed -i -E`.
