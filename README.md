@@ -29,7 +29,7 @@ $ Rscript create_exhibit.R -h
 ```
 
 #### 2. Host your exhibit
-If you would like to host your examples on this repository, include their addition to the `exhibits` folder in your [pull request](https://help.github.com/en/articles/creating-a-pull-request).
+If you would like to host your examples on this repository, include their addition to the `exhibits` folder in your [pull request](https://help.github.com/en/articles/creating-a-pull-request). 
 
 If you have the means and desire to host your exhibits yourself, you are welcome to do that.
 
