@@ -57,7 +57,52 @@ exhibitsList <- list(
         , report_url = "https://uptake.github.io/pkgnet-gallery/exhibits/uptasticsearch/uptasticsearch.html"
         , image_url = "https://uptake.github.io/pkgnet-gallery/exhibits/uptasticsearch/uptasticsearch.png"
     )
-    
+    , list(
+        package_name = "R6"
+        , report_url = "https://uptake.github.io/pkgnet-gallery/exhibits/R6/R6.html"
+        , image_url = "https://uptake.github.io/pkgnet-gallery/exhibits/R6/R6.png"
+    )
+    , list(
+        package_name = "Rcpp"
+        , report_url = "https://uptake.github.io/pkgnet-gallery/exhibits/Rcpp/Rcpp.html"
+        , image_url = "https://uptake.github.io/pkgnet-gallery/exhibits/Rcpp/Rcpp.png"
+    )
+    , list(
+        package_name = "RcppEigen"
+        , report_url = "https://uptake.github.io/pkgnet-gallery/exhibits/RcppEigen/RcppEigen.html"
+        , image_url = "https://uptake.github.io/pkgnet-gallery/exhibits/RcppEigen/RcppEigen.png"
+    )
+    , list(
+        package_name = "cli"
+        , report_url = "https://uptake.github.io/pkgnet-gallery/exhibits/cli/cli.html"
+        , image_url = "https://uptake.github.io/pkgnet-gallery/exhibits/cli/cli.png"
+    )
+    , list(
+        package_name = "fs"
+        , report_url = "https://uptake.github.io/pkgnet-gallery/exhibits/fs/fs.html"
+        , image_url = "https://uptake.github.io/pkgnet-gallery/exhibits/fs/fs.png"
+    )
+    , list(
+        package_name = "glue"
+        , report_url = "https://uptake.github.io/pkgnet-gallery/exhibits/glue/glue.html"
+        , image_url = "https://uptake.github.io/pkgnet-gallery/exhibits/glue/glue.png"
+    )
+    , list(
+        package_name = "lifecycle"
+        , report_url = "https://uptake.github.io/pkgnet-gallery/exhibits/lifecycle/lifecycle.html"
+        , image_url = "https://uptake.github.io/pkgnet-gallery/exhibits/lifecycle/lifecycle.png"
+    )
+    , list(
+        package_name = "rlang"
+        , report_url = "https://uptake.github.io/pkgnet-gallery/exhibits/rlang/rlang.html"
+        , image_url = "https://uptake.github.io/pkgnet-gallery/exhibits/rlang/rlang.png"
+    )
+    , list(
+        package_name = "vctrs"
+        , report_url = "https://uptake.github.io/pkgnet-gallery/exhibits/vctrs/vctrs.html"
+        , image_url = "https://uptake.github.io/pkgnet-gallery/exhibits/vctrs/vctrs.png"
+    )
+
     ### ADD NEW EXHIBITS ABOVE THIS LINE ###
 )
 
