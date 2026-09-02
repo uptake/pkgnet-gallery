@@ -21,12 +21,13 @@ jobs:
         run: |
             latestVersion=$(git -c 'versionsort.suffix=-' \
             ls-remote --exit-code --refs --sort='version:refname' --tags https://github.com/uptake/pkgnet 'v*.*.*' \
-            | tail --lines=1 \
+            | tail -n 1 \
             | awk -F/ '{ print $3 }' \
-            | sed s/v//)
+            | sed 's/v//')
             echo "Found $latestVersion"
+            echo "latestVersion=$latestVersion" >> "$GITHUB_OUTPUT"
       - name: Update Version in local DESCRIPTION file
-        run: sed -i -E "s/Version:.+$/Version:\s$latestVersion/" $GITHUB_WORKSPACE/DESCRIPTION
+        run: sed -i '' -E "s/^Version:.+$/Version: ${{steps.latesttag.outputs.latestVersion}}/" $GITHUB_WORKSPACE/DESCRIPTION
       - name: Git Checkout New Docs Branch 
         run: |
           git checkout -b website_docs_update
@@ -51,5 +52,5 @@ jobs:
       - name: Commit website doc changes (overwrite if existing)
         run: |
           git add DESCRIPTION docs/\*
-          git commit -m "Update gallery documentation to ${{steps.previoustag.outputs.tag}}" || echo "No changes to commit"
+          git commit -m "Update gallery documentation to ${{steps.latesttag.outputs.latestVersion}}" || echo "No changes to commit"
           git push -f origin website_docs_update
