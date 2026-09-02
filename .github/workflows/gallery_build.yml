@@ -27,7 +27,10 @@ jobs:
             echo "Found $latestVersion"
             echo "latestVersion=$latestVersion" >> "$GITHUB_OUTPUT"
       - name: Update Version in local DESCRIPTION file
-        run: sed -i '' -E "s/^Version:.+$/Version: ${{steps.latesttag.outputs.latestVersion}}/" $GITHUB_WORKSPACE/DESCRIPTION
+        env:
+          LATEST_VERSION: ${{ steps.latesttag.outputs.latestVersion }}
+        run: |
+          sed -i '' -E "s/^Version:.+$/Version: ${LATEST_VERSION}/" "$GITHUB_WORKSPACE/DESCRIPTION"
       - name: Git Checkout New Docs Branch 
         run: |
           git checkout -b website_docs_update
@@ -50,7 +53,11 @@ jobs:
           name: "built_gallery_docs_${{steps.latesttag.outputs.latestVersion}}"
           path: ${{github.workspace}}/docs/
       - name: Commit website doc changes (overwrite if existing)
+        env:
+          LATEST_VERSION: ${{ steps.latesttag.outputs.latestVersion }}
         run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add DESCRIPTION docs/\*
-          git commit -m "Update gallery documentation to ${{steps.latesttag.outputs.latestVersion}}" || echo "No changes to commit"
+          git commit -m "Update gallery documentation to ${LATEST_VERSION}" || echo "No changes to commit"
           git push -f origin website_docs_update
